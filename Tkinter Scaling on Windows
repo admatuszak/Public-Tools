@@ -1,0 +1,13 @@
+# Tkinter Issue - When Windows has scaling enabled (Settings->Display->Scale and layout set to anything other 100%), 
+# tkinter may redraw the application at the wrong resolution. 
+# For example, if the scale is set to 150% and the tkinter application draws an image on a canvas, the application
+# will rescale at 100%.
+
+# For a good description, see https://stackoverflow.com/questions/44398075/can-dpi-scaling-be-enabled-disabled-programmatically-on-a-per-session-basis
+
+# Import ctypes to get and set the dpi 
+import ctypes
+
+if __name__ == "__main__":
+    dpi_awareness = ctypes.windll.shcore.SetProcessDpiAwareness(2)
+    main()
